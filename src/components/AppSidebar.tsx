@@ -78,7 +78,7 @@ export function AppSidebar() {
                 key={item.title}
                 to={item.url}
                 className={`
-                  sidebar-item-spotify
+                  sidebar-item-spotify group
                   ${isItemActive ? 'sidebar-item-active-spotify' : 'sidebar-item-inactive-spotify'}
                   animate-fade-in-up delay-${index * 100}
                 `}

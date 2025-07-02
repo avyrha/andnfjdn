@@ -185,7 +185,7 @@
   }
 
   .sidebar-item-spotify {
-    @apply flex items-center space-x-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 relative group;
+    @apply flex items-center space-x-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 relative;
   }
 
   .sidebar-item-active-spotify {
