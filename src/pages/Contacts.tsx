@@ -1,4 +1,11 @@
 import { Button } from "@/components/ui/button";
+import PersonIcon from '@mui/icons-material/Person';
+import EmailIcon from '@mui/icons-material/Email';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import AddIcon from '@mui/icons-material/Add';
+import SearchIcon from '@mui/icons-material/Search';
+import FilterListIcon from '@mui/icons-material/FilterList';
 
 const contacts = [
   {
@@ -7,10 +14,9 @@ const contacts = [
     company: "Google",
     role: "University Recruiter",
     email: "sarah.chen@google.com",
-    linkedin: "linkedin.com/in/sarahchen",
     lastContact: "2 days ago",
     status: "Active",
-    notes: "Very responsive, prefers email communication"
+    avatar: "SC"
   },
   {
     id: 2,
@@ -18,10 +24,9 @@ const contacts = [
     company: "Microsoft",
     role: "Talent Acquisition Manager",
     email: "alex.rodriguez@microsoft.com",
-    linkedin: "linkedin.com/in/alexrodriguez",
     lastContact: "1 week ago",
     status: "Responded",
-    notes: "Mentioned they're looking for PM interns with strong analytics background"
+    avatar: "AR"
   },
   {
     id: 3,
@@ -29,10 +34,9 @@ const contacts = [
     company: "Apple",
     role: "Campus Recruiting Lead",
     email: "jessica.wu@apple.com",
-    linkedin: "linkedin.com/in/jessicawu",
     lastContact: "3 days ago",
     status: "No Response",
-    notes: "Follow up in 2 weeks, busy with campus visits"
+    avatar: "JW"
   },
   {
     id: 4,
@@ -40,110 +44,106 @@ const contacts = [
     company: "Netflix",
     role: "Technical Recruiter",
     email: "marcus.johnson@netflix.com",
-    linkedin: "linkedin.com/in/marcusjohnson",
     lastContact: "5 days ago",
     status: "Active",
-    notes: "Interested in candidates with ML/Data Science background"
+    avatar: "MJ"
   }
 ];
 
 const getStatusColor = (status: string) => {
   switch (status) {
     case "Active":
-      return "bg-mint/20 text-mint-foreground";
+      return "bg-primary/20 text-primary border-primary/30";
     case "Responded":
-      return "bg-sky/20 text-sky-foreground";
+      return "bg-blue-500/20 text-blue-400 border-blue-500/30";
     case "No Response":
-      return "bg-muted text-muted-foreground";
+      return "bg-muted/50 text-muted-foreground border-border";
     default:
-      return "bg-muted text-muted-foreground";
+      return "bg-muted/50 text-muted-foreground border-border";
   }
 };
 
 export default function Contacts() {
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 mobile-padding">
       {/* Header */}
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-3xl font-inter font-bold text-foreground">HR Contacts</h1>
-          <p className="text-muted-foreground mt-1">Manage your recruiter and HR connections</p>
+      <div className="flex flex-col md:flex-row md:items-center justify-between space-y-4 md:space-y-0">
+        <div className="animate-fade-in-up">
+          <h1 className="text-3xl md:text-4xl font-bold text-foreground">HR Contacts</h1>
+          <p className="text-muted-foreground mt-2">Manage your recruiter connections</p>
         </div>
-        <Button className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-xl font-inter font-semibold">
-          + Add Contact
+        <Button className="btn-spotify mobile-full animate-fade-in-up delay-100">
+          <AddIcon sx={{ fontSize: 18, marginRight: 1 }} />
+          Add Contact
         </Button>
       </div>
 
       {/* Search and Filter */}
-      <div className="flex items-center space-x-4">
-        <div className="flex-1">
+      <div className="flex flex-col md:flex-row gap-4 animate-fade-in-up delay-200">
+        <div className="flex-1 relative">
+          <SearchIcon className="absolute left-4 top-1/2 transform -translate-y-1/2 text-muted-foreground" sx={{ fontSize: 18 }} />
           <input 
             type="text" 
-            placeholder="Search contacts by name or company..."
-            className="w-full px-4 py-3 bg-input border border-border rounded-xl font-inter text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50"
+            placeholder="Search contacts..."
+            className="w-full h-12 pl-12 pr-4 bg-input/50 border border-border/50 rounded-full text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/50 transition-all duration-200"
           />
         </div>
-        <Button variant="outline" className="rounded-xl">
+        <Button variant="outline" className="rounded-full border-border/50 hover:border-primary/50 md:w-auto mobile-full">
+          <FilterListIcon sx={{ fontSize: 18, marginRight: 1 }} />
           Filter
         </Button>
       </div>
 
       {/* Contacts Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {contacts.map((contact) => (
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+        {contacts.map((contact, index) => (
           <div 
             key={contact.id}
-            className="bg-card rounded-2xl p-6 shadow-soft border border-border/50 hover:shadow-raised transition-all duration-200"
+            className={`card-spotify card-hover card-glow p-6 group animate-fade-in-up delay-${(index + 3) * 100}`}
           >
             {/* Header */}
-            <div className="flex items-start justify-between mb-4">
+            <div className="flex items-start justify-between mb-6">
               <div className="flex items-center space-x-3">
-                <div className="w-12 h-12 bg-gradient-to-br from-lavender to-sky rounded-full flex items-center justify-center">
-                  <span className="text-lg font-inter font-bold text-lavender-foreground">
-                    {contact.name.split(' ').map(n => n[0]).join('')}
+                <div className="w-12 h-12 bg-gradient-to-br from-primary/20 to-primary/10 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
+                  <span className="text-lg font-bold text-primary">
+                    {contact.avatar}
                   </span>
                 </div>
                 <div>
-                  <h3 className="font-inter font-semibold text-foreground">{contact.name}</h3>
+                  <h3 className="font-bold text-foreground text-lg">{contact.name}</h3>
                   <p className="text-sm text-muted-foreground">{contact.company}</p>
                 </div>
               </div>
-              <span className={`px-2 py-1 rounded-full text-xs font-medium ${getStatusColor(contact.status)}`}>
+              <span className={`px-3 py-1 rounded-full text-xs font-semibold border ${getStatusColor(contact.status)}`}>
                 {contact.status}
               </span>
             </div>
 
             {/* Role */}
-            <p className="text-sm font-inter font-medium text-foreground mb-3">{contact.role}</p>
+            <p className="text-sm font-medium text-foreground mb-4 bg-muted/30 px-3 py-2 rounded-lg">
+              {contact.role}
+            </p>
 
             {/* Contact Info */}
-            <div className="space-y-2 mb-4">
-              <div className="flex items-center space-x-2 text-sm">
-                <span>📧</span>
-                <span className="text-muted-foreground truncate">{contact.email}</span>
+            <div className="space-y-3 mb-6">
+              <div className="flex items-center space-x-3 text-sm">
+                <EmailIcon sx={{ fontSize: 16 }} className="text-muted-foreground" />
+                <span className="text-muted-foreground truncate flex-1">{contact.email}</span>
               </div>
-              <div className="flex items-center space-x-2 text-sm">
-                <span>💼</span>
-                <span className="text-muted-foreground truncate">{contact.linkedin}</span>
-              </div>
-              <div className="flex items-center space-x-2 text-sm">
-                <span>🕒</span>
+              <div className="flex items-center space-x-3 text-sm">
+                <AccessTimeIcon sx={{ fontSize: 16 }} className="text-muted-foreground" />
                 <span className="text-muted-foreground">Last contact: {contact.lastContact}</span>
               </div>
             </div>
 
-            {/* Notes */}
-            <div className="mb-4">
-              <p className="text-xs text-muted-foreground italic">"{contact.notes}"</p>
-            </div>
-
             {/* Actions */}
             <div className="flex space-x-2">
-              <Button variant="outline" size="sm" className="flex-1 rounded-xl">
-                📧 Email
+              <Button variant="outline" size="sm" className="flex-1 rounded-full border-border/50 hover:border-primary/50">
+                <EmailIcon sx={{ fontSize: 14, marginRight: 1 }} />
+                Email
               </Button>
-              <Button variant="outline" size="sm" className="rounded-xl">
-                Edit
+              <Button variant="outline" size="sm" className="rounded-full border-border/50 hover:border-primary/50">
+                <PersonIcon sx={{ fontSize: 14 }} />
               </Button>
             </div>
           </div>
@@ -151,20 +151,20 @@ export default function Contacts() {
       </div>
 
       {/* Quick Actions */}
-      <div className="bg-gradient-to-br from-lavender/20 to-sky/20 rounded-2xl p-6 border border-lavender/30">
-        <h3 className="text-lg font-inter font-semibold text-foreground mb-4">Quick Actions</h3>
+      <div className="card-spotify p-6 md:p-8 animate-fade-in-up delay-700">
+        <h3 className="text-xl font-bold text-foreground mb-6">Quick Actions</h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <Button variant="outline" className="h-16 rounded-xl flex-col space-y-1">
-            <span className="text-lg">📥</span>
-            <span className="text-sm">Import from LinkedIn</span>
+          <Button variant="outline" className="h-16 rounded-2xl flex-col space-y-2 border-border/50 hover:border-primary/50 group">
+            <LinkedInIcon sx={{ fontSize: 24 }} className="text-primary group-hover:scale-110 transition-transform duration-200" />
+            <span className="text-sm font-medium">Import from LinkedIn</span>
           </Button>
-          <Button variant="outline" className="h-16 rounded-xl flex-col space-y-1">
-            <span className="text-lg">📊</span>
-            <span className="text-sm">Export Contacts</span>
+          <Button variant="outline" className="h-16 rounded-2xl flex-col space-y-2 border-border/50 hover:border-primary/50 group">
+            <EmailIcon sx={{ fontSize: 24 }} className="text-primary group-hover:scale-110 transition-transform duration-200" />
+            <span className="text-sm font-medium">Export Contacts</span>
           </Button>
-          <Button variant="outline" className="h-16 rounded-xl flex-col space-y-1">
-            <span className="text-lg">🔄</span>
-            <span className="text-sm">Sync with CRM</span>
+          <Button variant="outline" className="h-16 rounded-2xl flex-col space-y-2 border-border/50 hover:border-primary/50 group">
+            <PersonIcon sx={{ fontSize: 24 }} className="text-primary group-hover:scale-110 transition-transform duration-200" />
+            <span className="text-sm font-medium">Sync Contacts</span>
           </Button>
         </div>
       </div>

@@ -5,7 +5,8 @@ import PeopleIcon from '@mui/icons-material/People';
 import ArticleIcon from '@mui/icons-material/Article';
 import DescriptionIcon from '@mui/icons-material/Description';
 import SettingsIcon from '@mui/icons-material/Settings';
-import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
+import CloseIcon from '@mui/icons-material/Close';
+import { Button } from "@/components/ui/button";
 
 const sidebarItems = [
   { 
@@ -40,7 +41,11 @@ const sidebarItems = [
   }
 ];
 
-export function AppSidebar() {
+interface AppSidebarProps {
+  onClose?: () => void;
+}
+
+export function AppSidebar({ onClose }: AppSidebarProps) {
   const location = useLocation();
   const currentPath = location.pathname;
 
@@ -52,9 +57,9 @@ export function AppSidebar() {
   };
 
   return (
-    <aside className="w-64 h-screen sidebar-spotify sticky top-0 flex flex-col animate-slide-in-left">
+    <aside className="w-64 h-screen sidebar-spotify flex flex-col">
       {/* Logo/Brand */}
-      <div className="p-6 border-b border-sidebar-border/30">
+      <div className="p-6 border-b border-sidebar-border/30 flex items-center justify-between">
         <div className="flex items-center space-x-3">
           <div className="w-12 h-12 gradient-primary rounded-2xl flex items-center justify-center shadow-lg">
             <span className="text-primary-foreground font-bold text-2xl">I</span>
@@ -64,6 +69,18 @@ export function AppSidebar() {
             <p className="text-xs text-sidebar-foreground/60 font-medium tracking-wider uppercase">Land Faster</p>
           </div>
         </div>
+        
+        {/* Close button for mobile */}
+        {onClose && (
+          <Button 
+            variant="ghost" 
+            size="icon"
+            className="md:hidden rounded-full hover:bg-sidebar-accent/50"
+            onClick={onClose}
+          >
+            <CloseIcon sx={{ fontSize: 20 }} />
+          </Button>
+        )}
       </div>
 
       {/* Navigation */}
@@ -82,6 +99,7 @@ export function AppSidebar() {
                   ${isItemActive ? 'sidebar-item-active-spotify' : 'sidebar-item-inactive-spotify'}
                   animate-fade-in-up delay-${index * 100}
                 `}
+                onClick={onClose}
               >
                 <IconComponent sx={{ fontSize: 22 }} />
                 <span className="font-medium">{item.title}</span>

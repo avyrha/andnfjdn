@@ -12,13 +12,29 @@ import ReplyIcon from '@mui/icons-material/Reply';
 import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
 import ArticleIcon from '@mui/icons-material/Article';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+import WavingHandIcon from '@mui/icons-material/WavingHand';
 
 export default function Dashboard() {
   return (
     <div className="space-y-8 mobile-padding">
+      {/* Greeting Section */}
+      <div className="flex items-center space-x-4 p-6 md:p-8 card-spotify card-hover animate-fade-in-up">
+        <div className="w-16 h-16 bg-gradient-to-br from-primary/20 to-primary/10 rounded-2xl flex items-center justify-center">
+          <WavingHandIcon sx={{ fontSize: 32 }} className="text-primary" />
+        </div>
+        <div>
+          <h2 className="text-2xl md:text-3xl font-bold text-foreground">
+            Good morning, Alex!
+          </h2>
+          <p className="text-lg text-muted-foreground">
+            Ready to land your dream internship?
+          </p>
+        </div>
+      </div>
+
       {/* Hero Header */}
       <div className="text-center space-y-8 py-8 md:py-16">
-        <div className="space-y-6 animate-fade-in-up">
+        <div className="space-y-6 animate-fade-in-up delay-100">
           <h1 className="text-4xl md:text-6xl font-bold text-foreground leading-tight">
             Land your next internship{" "}
             <span className="text-gradient-spotify">10x faster</span>

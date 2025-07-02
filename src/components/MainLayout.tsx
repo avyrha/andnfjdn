@@ -24,14 +24,14 @@ export function MainLayout({ children }: MainLayoutProps) {
               className="absolute inset-0 bg-black/50 backdrop-blur-sm"
               onClick={() => setSidebarOpen(false)}
             />
-            <div className="absolute left-0 top-0 h-full">
-              <AppSidebar />
+            <div className="absolute left-0 top-0 h-full w-64 animate-slide-in-left">
+              <AppSidebar onClose={() => setSidebarOpen(false)} />
             </div>
           </div>
         )}
 
         <div className="flex-1 flex flex-col min-w-0">
-          <TopNavBar />
+          <TopNavBar onMenuClick={() => setSidebarOpen(true)} />
           <main className="flex-1 p-4 md:p-8 overflow-x-hidden">
             {children}
           </main>
