@@ -173,15 +173,15 @@
 
   /* Status indicators */
   .status-online {
-    @apply w-3 h-3 bg-green-500 rounded-full border-2 border-sidebar-background;
+    @apply w-3 h-3 bg-green-500 rounded-full border-2 border-sidebar;
   }
 
   .status-away {
-    @apply w-3 h-3 bg-yellow-500 rounded-full border-2 border-sidebar-background;
+    @apply w-3 h-3 bg-yellow-500 rounded-full border-2 border-sidebar;
   }
 
   .status-offline {
-    @apply w-3 h-3 bg-gray-400 rounded-full border-2 border-sidebar-background;
+    @apply w-3 h-3 bg-gray-400 rounded-full border-2 border-sidebar;
   }
 
   /* Discord-inspired sidebar styles */
