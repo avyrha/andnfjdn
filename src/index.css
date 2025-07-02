@@ -6,63 +6,64 @@
 
 @layer base {
   :root {
-    /* Pure white backgrounds */
+    /* Primary backgrounds */
     --background: 0 0% 100%;
-    --foreground: 220 20% 15%;
+    --foreground: 0 0% 13%;
 
-    /* Neumorphic card backgrounds */
-    --card: 0 0% 99.5%;
-    --card-foreground: 220 20% 15%;
+    /* Card backgrounds */
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 13%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 220 20% 15%;
+    --popover-foreground: 0 0% 13%;
 
-    /* Pastel accent colors - Gen Z style */
-    --primary: 250 85% 25%;
+    /* Azure Blue Primary */
+    --primary: 232 100% 61%;
     --primary-foreground: 0 0% 100%;
 
-    /* Lavender accents */
-    --lavender: 250 50% 94%;
-    --lavender-foreground: 250 85% 25%;
+    /* Mint Green Success */
+    --success: 173 100% 37%;
+    --success-foreground: 0 0% 100%;
 
-    /* Mint accents */
-    --mint: 150 70% 92%;
-    --mint-foreground: 150 85% 20%;
+    /* Coral Orange Warning/Action */
+    --warning: 25 100% 50%;
+    --warning-foreground: 0 0% 100%;
 
-    /* Sky blue accents */
-    --sky: 210 80% 92%;
-    --sky-foreground: 210 85% 25%;
+    /* Neutral grays */
+    --neutral-50: 0 0% 96%;
+    --neutral-100: 0 0% 96%;
+    --neutral-900: 0 0% 13%;
 
     /* Sidebar styling */
-    --sidebar-bg: 240 20% 98%;
-    --sidebar-foreground: 220 15% 30%;
-    --sidebar-accent: 250 50% 96%;
+    --sidebar-bg: 0 0% 100%;
+    --sidebar-foreground: 0 0% 13%;
+    --sidebar-accent: 0 0% 96%;
 
     /* Secondary and muted tones */
-    --secondary: 240 20% 96%;
-    --secondary-foreground: 220 20% 20%;
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 13%;
 
-    --muted: 240 15% 96%;
-    --muted-foreground: 220 15% 45%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
 
-    --accent: 250 50% 94%;
-    --accent-foreground: 250 85% 25%;
+    --accent: 0 0% 96%;
+    --accent-foreground: 0 0% 13%;
 
-    --destructive: 0 75% 60%;
+    --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    /* Neumorphic borders and inputs */
-    --border: 240 15% 92%;
-    --input: 240 15% 97%;
-    --ring: 250 85% 60%;
+    /* Material Design borders and inputs */
+    --border: 0 0% 80%;
+    --input: 0 0% 100%;
+    --ring: 232 100% 61%;
 
-    /* Generous border radius for modern feel */
-    --radius: 0.75rem;
+    /* Material Design radius */
+    --radius: 0.25rem;
 
-    /* Neumorphic shadows */
-    --shadow-soft: 0 2px 8px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.06);
-    --shadow-raised: 0 4px 12px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.04);
-    --shadow-pressed: inset 0 2px 4px rgba(0, 0, 0, 0.06);
+    /* Material Design shadows */
+    --shadow-2: 0px 2px 4px rgba(0, 0, 0, 0.05);
+    --shadow-4: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    --shadow-6: 0px 6px 12px rgba(0, 0, 0, 0.15);
 
     /* Animation timings */
     --transition-smooth: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);

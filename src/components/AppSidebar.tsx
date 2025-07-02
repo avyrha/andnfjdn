@@ -1,48 +1,41 @@
 import { NavLink, useLocation } from "react-router-dom";
-import { 
-  Calendar, 
-  Settings, 
-  User, 
-  Book,
-  Bell
-} from "lucide-react";
+import DashboardIcon from '@mui/icons-material/Dashboard';
+import MailIcon from '@mui/icons-material/Mail';
+import PeopleIcon from '@mui/icons-material/People';
+import ArticleIcon from '@mui/icons-material/Article';
+import DescriptionIcon from '@mui/icons-material/Description';
+import SettingsIcon from '@mui/icons-material/Settings';
 
 const sidebarItems = [
   { 
     title: "Dashboard", 
     url: "/", 
-    icon: Calendar, 
-    emoji: "📊"
+    icon: DashboardIcon
   },
   { 
     title: "Applications", 
     url: "/applications", 
-    icon: Calendar, 
-    emoji: "📋"
+    icon: MailIcon
   },
   { 
     title: "HR Contacts", 
     url: "/contacts", 
-    icon: User, 
-    emoji: "👥"
+    icon: PeopleIcon
   },
   { 
     title: "Templates", 
     url: "/templates", 
-    icon: Book, 
-    emoji: "📝"
+    icon: ArticleIcon
   },
   { 
     title: "Resume", 
     url: "/resume", 
-    icon: User, 
-    emoji: "📄"
+    icon: DescriptionIcon
   },
   { 
     title: "Settings", 
     url: "/settings", 
-    icon: Settings, 
-    emoji: "⚙️"
+    icon: SettingsIcon
   }
 ];
 
@@ -58,40 +51,41 @@ export function AppSidebar() {
   };
 
   return (
-    <aside className="w-88 h-screen bg-sidebar border-r border-border sticky top-0 flex flex-col">
+    <aside className="w-64 h-screen bg-sidebar shadow-elevation-6 sticky top-0 flex flex-col rounded-[4px]">
       {/* Logo/Brand */}
-      <div className="p-6 border-b border-border">
+      <div className="p-4 border-b border-border">
         <div className="flex items-center space-x-3">
-          <div className="w-10 h-10 bg-gradient-to-br from-lavender to-sky rounded-xl flex items-center justify-center shadow-soft">
+          <div className="w-10 h-10 bg-gradient-to-br from-primary to-warning rounded-[4px] flex items-center justify-center">
             <span className="text-xl">🚀</span>
           </div>
           <div>
             <h1 className="font-inter font-bold text-lg text-foreground">InternEase</h1>
-            <p className="text-sm text-muted-foreground">Land faster</p>
+            <p className="text-xs text-muted-foreground uppercase tracking-wide">LAND FASTER</p>
           </div>
         </div>
       </div>
 
       {/* Navigation */}
-      <nav className="flex-1 p-4 space-y-2">
+      <nav className="flex-1 p-2">
         {sidebarItems.map((item) => {
           const isItemActive = isActive(item.url);
+          const IconComponent = item.icon;
           
           return (
             <NavLink
               key={item.title}
               to={item.url}
               className={`
-                flex items-center space-x-4 px-4 py-3 rounded-xl font-inter font-medium
-                transition-all duration-200 group
+                flex items-center space-x-3 px-4 py-3 rounded-[4px] font-inter font-medium
+                transition-all duration-200 mb-1 text-sm
                 ${isItemActive 
-                  ? 'bg-sidebar-accent text-accent-foreground shadow-soft' 
-                  : 'text-sidebar-foreground hover:bg-sidebar-accent/50 hover:shadow-soft'
+                  ? 'bg-primary text-primary-foreground shadow-elevation-2' 
+                  : 'text-sidebar-foreground hover:bg-sidebar-accent'
                 }
               `}
             >
-              <span className="text-2xl">{item.emoji}</span>
-              <span className="text-base">{item.title}</span>
+              <IconComponent sx={{ fontSize: 24 }} />
+              <span className="text-sm uppercase tracking-wide">{item.title}</span>
             </NavLink>
           );
         })}
@@ -99,8 +93,8 @@ export function AppSidebar() {
 
       {/* User Profile */}
       <div className="p-4 border-t border-border">
-        <div className="flex items-center space-x-3 p-3 rounded-xl bg-sidebar-accent/30">
-          <div className="w-10 h-10 bg-gradient-to-br from-mint to-lavender rounded-full flex items-center justify-center">
+        <div className="flex items-center space-x-3 p-3 rounded-[4px] bg-sidebar-accent">
+          <div className="w-10 h-10 bg-gradient-to-br from-success to-primary rounded-full flex items-center justify-center">
             <span className="text-lg">😊</span>
           </div>
           <div className="flex-1 min-w-0">

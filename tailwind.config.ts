@@ -56,18 +56,19 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
-				/* Gen Z Pastel Colors */
-				lavender: {
-					DEFAULT: 'hsl(var(--lavender))',
-					foreground: 'hsl(var(--lavender-foreground))'
+				/* Material Design Colors */
+				success: {
+					DEFAULT: 'hsl(var(--success))',
+					foreground: 'hsl(var(--success-foreground))'
 				},
-				mint: {
-					DEFAULT: 'hsl(var(--mint))',
-					foreground: 'hsl(var(--mint-foreground))'
+				warning: {
+					DEFAULT: 'hsl(var(--warning))',
+					foreground: 'hsl(var(--warning-foreground))'
 				},
-				sky: {
-					DEFAULT: 'hsl(var(--sky))',
-					foreground: 'hsl(var(--sky-foreground))'
+				neutral: {
+					50: 'hsl(var(--neutral-50))',
+					100: 'hsl(var(--neutral-100))',
+					900: 'hsl(var(--neutral-900))'
 				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-bg))',
@@ -76,10 +77,9 @@ export default {
 				}
 			},
 			boxShadow: {
-				'soft': 'var(--shadow-soft)',
-				'raised': 'var(--shadow-raised)',
-				'pressed': 'var(--shadow-pressed)',
-				'neumorphic': '0 4px 12px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.5)'
+				'elevation-2': 'var(--shadow-2)',
+				'elevation-4': 'var(--shadow-4)',
+				'elevation-6': 'var(--shadow-6)'
 			},
 			spacing: {
 				'18': '4.5rem',
