@@ -1,7 +1,11 @@
+import TrendingUpIcon from '@mui/icons-material/TrendingUp';
+import TrendingDownIcon from '@mui/icons-material/TrendingDown';
+import TrendingFlatIcon from '@mui/icons-material/TrendingFlat';
+
 interface StatsCardProps {
   title: string;
   value: string | number;
-  emoji: string;
+  icon: React.ComponentType<any>;
   bgColor?: string;
   subtitle?: string;
   trend?: 'up' | 'down' | 'neutral';
@@ -11,7 +15,7 @@ interface StatsCardProps {
 export function StatsCard({ 
   title, 
   value, 
-  emoji, 
+  icon: IconComponent,
   bgColor = "bg-card", 
   subtitle,
   trend = 'neutral',
@@ -27,33 +31,36 @@ export function StatsCard({
 
   const getTrendIcon = () => {
     switch (trend) {
-      case 'up': return '↗';
-      case 'down': return '↘';
-      default: return '→';
+      case 'up': return TrendingUpIcon;
+      case 'down': return TrendingDownIcon;
+      default: return TrendingFlatIcon;
     }
   };
 
+  const TrendIcon = getTrendIcon();
+
   return (
-    <div className={`${bgColor} card-modern card-hover p-6`}>
-      <div className="flex items-center justify-between">
-        <div className="space-y-2">
-          <div className="flex items-center space-x-2">
-            <p className="text-sm font-medium text-muted-foreground">{title}</p>
-            {trendValue && (
-              <span className={`text-xs ${getTrendColor()} flex items-center space-x-1`}>
-                <span>{getTrendIcon()}</span>
-                <span>{trendValue}</span>
-              </span>
-            )}
-          </div>
-          <div>
-            <p className="text-3xl font-bold text-foreground">{value}</p>
-            {subtitle && (
-              <p className="text-sm text-muted-foreground mt-1">{subtitle}</p>
-            )}
-          </div>
+    <div className={`${bgColor} card-netflix card-hover p-6`}>
+      <div className="flex items-center justify-between mb-4">
+        <div className="w-12 h-12 bg-gradient-to-br from-primary/20 to-primary/10 rounded-xl flex items-center justify-center">
+          <IconComponent sx={{ fontSize: 24 }} className="text-primary" />
         </div>
-        <div className="text-3xl opacity-80">{emoji}</div>
+        {trendValue && (
+          <div className={`flex items-center space-x-1 ${getTrendColor()}`}>
+            <TrendIcon sx={{ fontSize: 16 }} />
+            <span className="text-sm font-medium">{trendValue}</span>
+          </div>
+        )}
+      </div>
+      
+      <div className="space-y-2">
+        <p className="text-sm font-medium text-muted-foreground">{title}</p>
+        <div>
+          <p className="text-3xl font-bold text-foreground">{value}</p>
+          {subtitle && (
+            <p className="text-sm text-muted-foreground mt-1">{subtitle}</p>
+          )}
+        </div>
       </div>
     </div>
   );
