@@ -19,7 +19,7 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-				inter: ['Inter', 'system-ui', 'sans-serif'],
+				inter: ['Inter', 'Circular Std', 'system-ui', 'sans-serif'],
 				mono: ['JetBrains Mono', 'monospace'],
 			},
 			colors: {
@@ -81,6 +81,8 @@ export default {
 				'md': 'var(--shadow-md)',
 				'lg': 'var(--shadow-lg)',
 				'xl': 'var(--shadow-xl)',
+				'spotify': '0 8px 32px rgba(0, 0, 0, 0.4)',
+				'spotify-lg': '0 16px 64px rgba(0, 0, 0, 0.5)',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -104,10 +106,10 @@ export default {
 						height: '0'
 					}
 				},
-				'fade-in': {
+				'fade-in-up': {
 					'0%': {
 						opacity: '0',
-						transform: 'translateY(10px)'
+						transform: 'translateY(30px)'
 					},
 					'100%': {
 						opacity: '1',
@@ -117,7 +119,7 @@ export default {
 				'scale-in': {
 					'0%': {
 						opacity: '0',
-						transform: 'scale(0.95)'
+						transform: 'scale(0.9)'
 					},
 					'100%': {
 						opacity: '1',
@@ -127,7 +129,7 @@ export default {
 				'slide-in-left': {
 					'0%': {
 						opacity: '0',
-						transform: 'translateX(-20px)'
+						transform: 'translateX(-30px)'
 					},
 					'100%': {
 						opacity: '1',
@@ -137,21 +139,33 @@ export default {
 				'slide-in-right': {
 					'0%': {
 						opacity: '0',
-						transform: 'translateX(20px)'
+						transform: 'translateX(30px)'
 					},
 					'100%': {
 						opacity: '1',
 						transform: 'translateX(0)'
+					}
+				},
+				'shimmer': {
+					'0%': {
+						backgroundPosition: '-200% 0'
+					},
+					'100%': {
+						backgroundPosition: '200% 0'
 					}
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
-				'fade-in': 'fade-in 0.3s ease-out',
-				'scale-in': 'scale-in 0.2s ease-out',
-				'slide-in-left': 'slide-in-left 0.4s ease-out',
-				'slide-in-right': 'slide-in-right 0.4s ease-out',
+				'fade-in-up': 'fade-in-up 0.6s ease-out',
+				'scale-in': 'scale-in 0.4s ease-out',
+				'slide-in-left': 'slide-in-left 0.5s ease-out',
+				'slide-in-right': 'slide-in-right 0.5s ease-out',
+				'shimmer': 'shimmer 2s infinite',
+			},
+			backdropBlur: {
+				xs: '2px',
 			}
 		}
 	},
