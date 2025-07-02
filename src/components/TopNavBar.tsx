@@ -2,7 +2,6 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import SearchIcon from '@mui/icons-material/Search';
 import CreditCardIcon from '@mui/icons-material/CreditCard';
 import MenuIcon from '@mui/icons-material/Menu';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { Button } from "@/components/ui/button";
 import { useState } from 'react';
 
@@ -15,18 +14,18 @@ export function TopNavBar({ onMenuClick }: TopNavBarProps) {
   const [showProfileMenu, setShowProfileMenu] = useState(false);
 
   return (
-    <header className="h-16 glass-effect border-b border-border/30 sticky top-0 z-50 animate-slide-in-right">
+    <header className="h-16 glass-effect border-b border-border/30 sticky top-0 z-40 animate-slide-in-right">
       <div className="flex items-center justify-between h-full px-4 md:px-6">
         {/* Mobile Layout */}
         <div className="md:hidden flex items-center justify-between w-full">
-          {/* Hamburger Menu */}
+          {/* Hamburger Menu - Larger */}
           <Button 
             variant="ghost" 
             size="icon"
-            className="rounded-full hover:bg-accent/50 w-10 h-10"
+            className="rounded-full hover:bg-accent/50 w-12 h-12 flex items-center justify-center"
             onClick={onMenuClick}
           >
-            <MenuIcon sx={{ fontSize: 24 }} />
+            <MenuIcon sx={{ fontSize: 28 }} className="text-foreground" />
           </Button>
 
           {/* Centered Logo */}
@@ -39,10 +38,10 @@ export function TopNavBar({ onMenuClick }: TopNavBarProps) {
             <Button 
               variant="ghost" 
               size="icon"
-              className="rounded-full hover:bg-accent/50 w-10 h-10"
+              className="rounded-full hover:bg-accent/50 w-12 h-12"
               onClick={() => setShowProfileMenu(!showProfileMenu)}
             >
-              <div className="w-8 h-8 bg-gradient-to-br from-primary to-primary/80 rounded-full flex items-center justify-center">
+              <div className="w-9 h-9 bg-gradient-to-br from-primary to-primary/80 rounded-full flex items-center justify-center">
                 <span className="text-primary-foreground font-semibold text-sm">AC</span>
               </div>
               {/* Notification badge */}
@@ -53,51 +52,60 @@ export function TopNavBar({ onMenuClick }: TopNavBarProps) {
 
             {/* Profile Dropdown Menu */}
             {showProfileMenu && (
-              <div className="absolute right-0 top-12 w-64 bg-card border border-border/50 rounded-2xl shadow-spotify-lg backdrop-blur-xl z-50 animate-scale-in">
-                <div className="p-4">
-                  {/* Profile Info */}
-                  <div className="flex items-center space-x-3 mb-4 pb-4 border-b border-border/30">
-                    <div className="w-12 h-12 bg-gradient-to-br from-primary to-primary/80 rounded-full flex items-center justify-center">
-                      <span className="text-primary-foreground font-semibold">AC</span>
-                    </div>
-                    <div>
-                      <p className="font-semibold text-foreground">Alex Chen</p>
-                      <p className="text-sm text-muted-foreground">alex@college.edu</p>
-                    </div>
-                  </div>
-
-                  {/* Credits */}
-                  <div className="flex items-center justify-between p-3 bg-primary/10 rounded-xl mb-4">
-                    <div className="flex items-center space-x-2">
-                      <CreditCardIcon sx={{ fontSize: 18 }} className="text-primary" />
-                      <span className="text-sm font-medium text-foreground">Credits</span>
-                    </div>
-                    <span className="font-bold text-primary">25</span>
-                  </div>
-
-                  {/* Notifications */}
-                  <div className="space-y-2">
-                    <div className="flex items-center justify-between">
-                      <span className="text-sm font-medium text-foreground">Notifications</span>
-                      <span className="text-xs bg-destructive text-destructive-foreground px-2 py-1 rounded-full">3</span>
-                    </div>
-                    <div className="space-y-2 max-h-32 overflow-y-auto">
-                      <div className="p-2 bg-muted/30 rounded-lg">
-                        <p className="text-xs font-medium text-foreground">Google replied</p>
-                        <p className="text-xs text-muted-foreground">2 hours ago</p>
+              <>
+                {/* Backdrop */}
+                <div 
+                  className="fixed inset-0 bg-black/20 backdrop-blur-sm z-40"
+                  onClick={() => setShowProfileMenu(false)}
+                />
+                
+                {/* Menu */}
+                <div className="absolute right-0 top-12 w-72 bg-card/95 border border-border/50 rounded-2xl shadow-spotify-lg backdrop-blur-xl z-50 animate-scale-in">
+                  <div className="p-6">
+                    {/* Profile Info */}
+                    <div className="flex items-center space-x-3 mb-6 pb-4 border-b border-border/30">
+                      <div className="w-12 h-12 bg-gradient-to-br from-primary to-primary/80 rounded-full flex items-center justify-center">
+                        <span className="text-primary-foreground font-semibold">AC</span>
                       </div>
-                      <div className="p-2 bg-muted/30 rounded-lg">
-                        <p className="text-xs font-medium text-foreground">Application sent</p>
-                        <p className="text-xs text-muted-foreground">1 day ago</p>
+                      <div>
+                        <p className="font-semibold text-foreground">Alex Chen</p>
+                        <p className="text-sm text-muted-foreground">alex@college.edu</p>
                       </div>
-                      <div className="p-2 bg-muted/30 rounded-lg">
-                        <p className="text-xs font-medium text-foreground">Resume updated</p>
-                        <p className="text-xs text-muted-foreground">2 days ago</p>
+                    </div>
+
+                    {/* Credits */}
+                    <div className="flex items-center justify-between p-4 bg-primary/10 rounded-xl mb-6">
+                      <div className="flex items-center space-x-2">
+                        <CreditCardIcon sx={{ fontSize: 20 }} className="text-primary" />
+                        <span className="text-sm font-medium text-foreground">Credits</span>
+                      </div>
+                      <span className="font-bold text-primary text-lg">25</span>
+                    </div>
+
+                    {/* Notifications */}
+                    <div className="space-y-3">
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm font-medium text-foreground">Notifications</span>
+                        <span className="text-xs bg-destructive text-destructive-foreground px-2 py-1 rounded-full">3</span>
+                      </div>
+                      <div className="space-y-2 max-h-40 overflow-y-auto">
+                        <div className="p-3 bg-muted/30 rounded-lg hover:bg-muted/50 transition-colors cursor-pointer">
+                          <p className="text-sm font-medium text-foreground">Google replied to your application</p>
+                          <p className="text-xs text-muted-foreground">2 hours ago</p>
+                        </div>
+                        <div className="p-3 bg-muted/30 rounded-lg hover:bg-muted/50 transition-colors cursor-pointer">
+                          <p className="text-sm font-medium text-foreground">Application sent to Microsoft</p>
+                          <p className="text-xs text-muted-foreground">1 day ago</p>
+                        </div>
+                        <div className="p-3 bg-muted/30 rounded-lg hover:bg-muted/50 transition-colors cursor-pointer">
+                          <p className="text-sm font-medium text-foreground">Resume updated successfully</p>
+                          <p className="text-xs text-muted-foreground">2 days ago</p>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              </>
             )}
           </div>
         </div>
@@ -151,14 +159,6 @@ export function TopNavBar({ onMenuClick }: TopNavBarProps) {
           </div>
         </div>
       </div>
-
-      {/* Overlay to close profile menu */}
-      {showProfileMenu && (
-        <div 
-          className="fixed inset-0 z-40 md:hidden"
-          onClick={() => setShowProfileMenu(false)}
-        />
-      )}
     </header>
   );
 }

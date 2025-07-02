@@ -57,8 +57,8 @@ export function AppSidebar({ onClose }: AppSidebarProps) {
   };
 
   return (
-    <aside className="w-64 h-screen sidebar-spotify flex flex-col">
-      {/* Logo/Brand */}
+    <aside className="w-full h-screen sidebar-spotify flex flex-col shadow-spotify-lg">
+      {/* Logo/Brand with Close Button */}
       <div className="p-6 border-b border-sidebar-border/30 flex items-center justify-between">
         <div className="flex items-center space-x-3">
           <div className="w-12 h-12 gradient-primary rounded-2xl flex items-center justify-center shadow-lg">
@@ -70,22 +70,22 @@ export function AppSidebar({ onClose }: AppSidebarProps) {
           </div>
         </div>
         
-        {/* Close button for mobile */}
+        {/* Close button for mobile - Larger and more prominent */}
         {onClose && (
           <Button 
             variant="ghost" 
             size="icon"
-            className="md:hidden rounded-full hover:bg-sidebar-accent/50"
+            className="md:hidden rounded-full hover:bg-sidebar-accent/50 w-12 h-12 flex items-center justify-center"
             onClick={onClose}
           >
-            <CloseIcon sx={{ fontSize: 20 }} />
+            <CloseIcon sx={{ fontSize: 24 }} className="text-sidebar-foreground" />
           </Button>
         )}
       </div>
 
       {/* Navigation */}
-      <nav className="flex-1 p-4">
-        <div className="space-y-2">
+      <nav className="flex-1 p-6">
+        <div className="space-y-3">
           {sidebarItems.map((item, index) => {
             const isItemActive = isActive(item.url);
             const IconComponent = item.icon;
@@ -98,10 +98,11 @@ export function AppSidebar({ onClose }: AppSidebarProps) {
                   sidebar-item-spotify group
                   ${isItemActive ? 'sidebar-item-active-spotify' : 'sidebar-item-inactive-spotify'}
                   animate-fade-in-up delay-${index * 100}
+                  py-4 px-4 text-base
                 `}
                 onClick={onClose}
               >
-                <IconComponent sx={{ fontSize: 22 }} />
+                <IconComponent sx={{ fontSize: 24 }} />
                 <span className="font-medium">{item.title}</span>
                 {isItemActive && (
                   <div className="ml-auto w-2 h-2 bg-primary rounded-full animate-scale-in" />
@@ -113,10 +114,10 @@ export function AppSidebar({ onClose }: AppSidebarProps) {
       </nav>
 
       {/* User Profile */}
-      <div className="p-4 border-t border-sidebar-border/30">
-        <div className="flex items-center space-x-3 p-4 rounded-2xl bg-sidebar-accent/30 hover:bg-sidebar-accent/50 transition-all duration-200 cursor-pointer group">
+      <div className="p-6 border-t border-sidebar-border/30">
+        <div className="flex items-center space-x-4 p-4 rounded-2xl bg-sidebar-accent/30 hover:bg-sidebar-accent/50 transition-all duration-200 cursor-pointer group">
           <div className="relative">
-            <div className="w-12 h-12 bg-gradient-to-br from-primary to-primary/80 rounded-full flex items-center justify-center shadow-lg">
+            <div className="w-14 h-14 bg-gradient-to-br from-primary to-primary/80 rounded-full flex items-center justify-center shadow-lg">
               <span className="text-primary-foreground font-semibold text-lg">AC</span>
             </div>
             <div className="absolute -bottom-1 -right-1">
@@ -124,11 +125,11 @@ export function AppSidebar({ onClose }: AppSidebarProps) {
             </div>
           </div>
           <div className="flex-1 min-w-0">
-            <p className="font-semibold text-sidebar-foreground truncate">Alex Chen</p>
+            <p className="font-semibold text-sidebar-foreground truncate text-lg">Alex Chen</p>
             <p className="text-sm text-sidebar-foreground/60 truncate">alex@college.edu</p>
           </div>
           <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-            <SettingsIcon sx={{ fontSize: 18 }} className="text-sidebar-foreground/60" />
+            <SettingsIcon sx={{ fontSize: 20 }} className="text-sidebar-foreground/60" />
           </div>
         </div>
       </div>

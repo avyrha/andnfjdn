@@ -17,14 +17,16 @@ export function MainLayout({ children }: MainLayoutProps) {
           <AppSidebar />
         </div>
 
-        {/* Mobile Sidebar Overlay */}
+        {/* Mobile Sidebar Overlay - Full Screen Coverage */}
         {sidebarOpen && (
           <div className="fixed inset-0 z-50 md:hidden">
+            {/* Backdrop with higher z-index */}
             <div 
-              className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+              className="absolute inset-0 bg-black/60 backdrop-blur-sm z-10"
               onClick={() => setSidebarOpen(false)}
             />
-            <div className="absolute left-0 top-0 h-full w-64 animate-slide-in-left">
+            {/* Sidebar with even higher z-index */}
+            <div className="absolute left-0 top-0 h-full w-80 z-20 animate-slide-in-left">
               <AppSidebar onClose={() => setSidebarOpen(false)} />
             </div>
           </div>
