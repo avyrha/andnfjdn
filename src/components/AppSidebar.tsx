@@ -58,8 +58,8 @@ export function AppSidebar({ onClose }: AppSidebarProps) {
 
   return (
     <aside className="w-full h-screen sidebar-spotify flex flex-col shadow-spotify-lg">
-      {/* Logo/Brand with Close Button */}
-      <div className="p-6 border-b border-sidebar-border/30 flex items-center justify-between">
+      {/* Logo/Brand with Close Button - Fixed */}
+      <div className="p-6 border-b border-sidebar-border/30 flex items-center justify-between flex-shrink-0">
         <div className="flex items-center space-x-3">
           <div className="w-12 h-12 gradient-primary rounded-2xl flex items-center justify-center shadow-lg">
             <span className="text-primary-foreground font-bold text-2xl">H</span>
@@ -83,8 +83,8 @@ export function AppSidebar({ onClose }: AppSidebarProps) {
         )}
       </div>
 
-      {/* Navigation */}
-      <nav className="flex-1 p-6">
+      {/* Navigation - Scrollable */}
+      <nav className="flex-1 p-6 overflow-y-auto">
         <div className="space-y-3">
           {sidebarItems.map((item, index) => {
             const isItemActive = isActive(item.url);
@@ -113,8 +113,8 @@ export function AppSidebar({ onClose }: AppSidebarProps) {
         </div>
       </nav>
 
-      {/* User Profile */}
-      <div className="p-6 border-t border-sidebar-border/30">
+      {/* User Profile - Fixed at Bottom */}
+      <div className="p-6 border-t border-sidebar-border/30 flex-shrink-0">
         <div className="flex items-center space-x-4 p-4 rounded-2xl bg-sidebar-accent/30 hover:bg-sidebar-accent/50 transition-all duration-200 cursor-pointer group">
           <div className="relative">
             <div className="w-14 h-14 bg-gradient-to-br from-primary to-primary/80 rounded-full flex items-center justify-center shadow-lg">

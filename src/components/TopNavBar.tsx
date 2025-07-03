@@ -108,15 +108,10 @@ export function TopNavBar({ onMenuClick }: TopNavBarProps) {
           </div>
         </div>
 
-        {/* Desktop Layout */}
+        {/* Desktop Layout - Simplified */}
         <div className="hidden md:flex items-center justify-between w-full">
-          {/* Left - Logo */}
-          <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 gradient-primary rounded-2xl flex items-center justify-center shadow-lg">
-              <span className="text-primary-foreground font-bold text-xl">H</span>
-            </div>
-            <span className="font-bold text-xl text-foreground">Hireely</span>
-          </div>
+          {/* Left - Empty space for balance */}
+          <div className="flex-1"></div>
 
           {/* Right side - Actions */}
           <div className="flex items-center space-x-3">
