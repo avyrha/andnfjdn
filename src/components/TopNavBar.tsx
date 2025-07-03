@@ -1,4 +1,5 @@
 import NotificationsIcon from '@mui/icons-material/Notifications';
+import SearchIcon from '@mui/icons-material/Search';
 import CreditCardIcon from '@mui/icons-material/CreditCard';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Button } from "@/components/ui/button";
@@ -10,6 +11,7 @@ interface TopNavBarProps {
 
 export function TopNavBar({ onMenuClick }: TopNavBarProps) {
   const [showProfileMenu, setShowProfileMenu] = useState(false);
+  const [isSearchFocused, setIsSearchFocused] = useState(false);
 
   return (
     <header className="h-16 glass-effect border-b border-border/30 sticky top-0 z-40 animate-slide-in-right">
@@ -108,10 +110,27 @@ export function TopNavBar({ onMenuClick }: TopNavBarProps) {
           </div>
         </div>
 
-        {/* Desktop Layout - Simplified */}
+        {/* Desktop Layout */}
         <div className="hidden md:flex items-center justify-between w-full">
-          {/* Left - Empty space for balance */}
-          <div className="flex-1"></div>
+          {/* Left - Search Bar */}
+          <div className="flex-1 max-w-md">
+            <div className={`relative w-full transition-all duration-200 ${isSearchFocused ? 'scale-105' : ''}`}>
+              <SearchIcon 
+                className="absolute left-4 top-1/2 transform -translate-y-1/2 text-muted-foreground transition-colors duration-200" 
+                sx={{ fontSize: 18 }} 
+              />
+              <input
+                type="text"
+                placeholder="Search applications, contacts..."
+                className="w-full h-12 pl-12 pr-16 bg-input/50 border border-border/50 rounded-full text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/50 transition-all duration-200 backdrop-blur-sm"
+                onFocus={() => setIsSearchFocused(true)}
+                onBlur={() => setIsSearchFocused(false)}
+              />
+              <kbd className="absolute right-4 top-1/2 transform -translate-y-1/2 px-2 py-1 bg-muted/50 rounded-lg text-xs text-muted-foreground border border-border/30 font-mono">
+                ⌘K
+              </kbd>
+            </div>
+          </div>
 
           {/* Right side - Actions */}
           <div className="flex items-center space-x-3">
