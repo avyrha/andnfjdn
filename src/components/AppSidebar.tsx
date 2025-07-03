@@ -83,10 +83,10 @@ export function AppSidebar({ onClose }: AppSidebarProps) {
         )}
       </div>
 
-      {/* Navigation - Fixed Middle Section (No Scrolling) */}
-      <div className="flex-1 flex flex-col justify-center">
-        <nav className="px-6">
-          <div className="space-y-2">
+      {/* Navigation - Scrollable Middle Section */}
+      <div className="flex-1 overflow-y-auto">
+        <nav className="p-6">
+          <div className="space-y-3">
             {sidebarItems.map((item, index) => {
               const isItemActive = isActive(item.url);
               const IconComponent = item.icon;
@@ -99,7 +99,7 @@ export function AppSidebar({ onClose }: AppSidebarProps) {
                     sidebar-item-spotify group
                     ${isItemActive ? 'sidebar-item-active-spotify' : 'sidebar-item-inactive-spotify'}
                     animate-fade-in-up delay-${index * 100}
-                    py-3 px-4 text-base
+                    py-4 px-4 text-base
                   `}
                   onClick={onClose}
                 >
