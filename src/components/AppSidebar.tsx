@@ -62,10 +62,10 @@ export function AppSidebar({ onClose }: AppSidebarProps) {
       <div className="p-6 border-b border-sidebar-border/30 flex items-center justify-between">
         <div className="flex items-center space-x-3">
           <div className="w-12 h-12 gradient-primary rounded-2xl flex items-center justify-center shadow-lg">
-            <span className="text-primary-foreground font-bold text-2xl">I</span>
+            <span className="text-primary-foreground font-bold text-2xl">H</span>
           </div>
           <div>
-            <h1 className="font-bold text-2xl text-sidebar-foreground">InternEase</h1>
+            <h1 className="font-bold text-2xl text-sidebar-foreground">Hireely</h1>
             <p className="text-xs text-sidebar-foreground/60 font-medium tracking-wider uppercase">Land Faster</p>
           </div>
         </div>
